@@ -1,0 +1,63 @@
+.calc {
+  margin: 50px;
+  background-color: #8888;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  height: 500px;
+  width: 650px;
+  border-radius: 25px;
+}
+.Screen {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 20px;
+  background-color: beige;
+  width: 500px;
+  height: 20px;
+  border-radius: 25px;
+}
+.TEXT {
+  font-size: larger;
+}
+
+.layout {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 500px;
+  background-color: darkgray;
+  padding: 20px;
+  border-radius: 25px;
+}
+.Numbers {
+  display: grid;
+  height: 250px;
+  row-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.But {
+  background-color: bisque;
+  width: 70px;
+  height: 50px;
+  border-radius: 50px;
+}
+.But:last-child {
+  grid-column: 2;
+}
+.Oper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-direction: column;
+  gap: 10px;
+}
+.Calculator {
+  display: flex;
+  justify-content: center;
+}
+.But:hover {
+  background-color: antiquewhite;
+}
