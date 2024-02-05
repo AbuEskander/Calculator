@@ -3,8 +3,33 @@ import "./App.css";
 
 const CalcButton = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 const CalcOper = ["/", "+", "-", "x", "C", "="];
-
-function Calculate() {} //TODO Make the Compute Function to Evaluate each 2 pair of values in the stack
+function Compute(First, op, Second) {
+  switch (op) {
+    case "-":
+      return First - Second;
+    case "+":
+      return Number(First) + Number(Second);
+    case "/":
+      return First / Second;
+    case "x":
+      return First * Second;
+    default:
+      return 1;
+  }
+}
+function Calculate(Arr) {
+  let newArr = Arr.map((item) =>
+    CalcOper.includes(item) ? item : Number(item)
+  );
+  let finalAnswer = 1;
+  console.log(newArr);
+  for (let i = 0; i < Arr.length - 1; i += 2) {
+    Arr[i + 2] = Compute(Arr[i], Arr[i + 1], Arr[i + 2]);
+    finalAnswer = Arr[i + 2];
+    console.log(finalAnswer);
+  }
+  return finalAnswer;
+} //TODO Make the Compute Function to Evaluate each 2 pair of values in the stack
 function App() {
   const [result, setResult] = useState("");
   const [stack, setStack] = useState([]);
@@ -26,15 +51,17 @@ function App() {
       console.log(NewArr);
 
       setResult("");
-    } else if (value == "C") {
+    } else if (value === "C") {
       setResult("");
       setStack([]);
       console.log("Cleared");
-    } else if (value == "=") {
-      if (NewArr.length) {
-        NewArr.push(result);
-        Calculate(NewArr);
-      }
+    } else if (value === "=") {
+      NewArr = stack;
+      NewArr.push(result);
+      setStack(NewArr);
+      setResult(`${Calculate(stack)}`);
+      setStack([]);
+      console.log("Nice");
     }
   }
   return (
@@ -55,7 +82,7 @@ function App() {
 function Title() {
   return (
     <div>
-      <h1>PROTON CALCULATOR</h1>
+      <h1>CALCULATOR</h1>
     </div>
   );
 }
